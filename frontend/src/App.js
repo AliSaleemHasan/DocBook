@@ -1,9 +1,12 @@
+import React from "react";
 import Login from "./Components/login/Login";
 import "./App.css";
+import Header from "./Components/header/Header";
 function App() {
   return (
     <div className="app">
-      <Login />
+      {/* <Login /> */}
+      <Header />
       {/* login page */}
       {/* login */}
       {/* signup */}
