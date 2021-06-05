@@ -1,7 +1,9 @@
+import Login from "./Components/login/Login";
+import "./App.css";
 function App() {
   return (
-    <div className="App">
-      <h1>hello from chat</h1>
+    <div className="app">
+      <Login />
       {/* login page */}
       {/* login */}
       {/* signup */}
