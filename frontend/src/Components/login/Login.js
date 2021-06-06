@@ -33,7 +33,7 @@ function Login() {
         </section>
 
         <p className="login__dontHaveAccount">
-          Dont have account? <span>Sign up</span>
+          Dont have account? <span blue_important>Sign up</span>
         </p>
       </div>
     </div>

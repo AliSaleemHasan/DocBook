@@ -1,7 +1,6 @@
 .login {
   width: 100vw;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +15,9 @@
   width: 40%;
   height: 60%;
 }
+
+/* login email */
+
 .login__email > h2 {
   margin-bottom: 20px;
 }
@@ -32,6 +34,7 @@
   border: none;
   border-bottom: 1px solid #999;
 }
+
 .login__email button {
   margin: 20px 0px 4px 0px;
   width: 100%;
@@ -46,13 +49,12 @@
   letter-spacing: 4px;
   background-color: #0a49ff;
 }
-
 .login__email p {
   font-family: sans-serif;
   font-size: 12px;
   text-align: right;
 }
-
+/* login otherMethods */
 .Login__otherMethods {
   display: flex;
   align-items: center;
@@ -67,12 +69,9 @@
   justify-content: space-between;
 }
 
+/*  */
 .login__dontHaveAccount {
   font-size: 14px;
   font-weight: 300;
   font-family: sans-serif;
-}
-span {
-  color: #0a49ff;
-  font-weight: 600;
 }
