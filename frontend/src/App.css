@@ -15,10 +15,10 @@
 .underlined::after {
   content: "";
   left: 0;
-  bottom: -9px;
+  bottom: -8px;
   position: absolute;
   border: solid 5px #0a49ff;
   border-color: transparent transparent #0a49ff transparent;
   border-radius: 0 0 240px 240p;
-  width: 120px;
+  width: 100%;
 }

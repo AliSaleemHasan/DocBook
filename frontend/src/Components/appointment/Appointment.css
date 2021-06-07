@@ -1,0 +1,24 @@
+.appointment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 40px;
+}
+.appointment__date {
+  flex: 0.15;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #0a49ff;
+}
+
+.appointment__patients {
+  background-color: #f9f9f9;
+  padding: 0 10px;
+  height: 30px;
+  flex: 0.85;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
