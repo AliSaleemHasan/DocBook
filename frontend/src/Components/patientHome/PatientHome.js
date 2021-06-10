@@ -28,7 +28,7 @@ function PatientHome() {
         <div className="patientHome__right">
           <img
             src="DocBookillustrator.png"
-            alt="illustrator "
+            alt="DocBookIllustrator "
             width={600}
             height={600}
           />

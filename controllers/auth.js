@@ -5,6 +5,7 @@ const { logIn, logOut } = require("../auth");
 const bcrypt = require("bcrypt");
 
 const { registerSchema, loginSchema, validator } = require("../validation");
+const { json } = require("express");
 
 module.exports.authCtrl = {
   login: async (req, res) => {
@@ -15,7 +16,8 @@ module.exports.authCtrl = {
     const user = await User.findOne({ email });
 
     if (!user || !(await user.matchPassword(password, user.password)))
-      throw new Error("incorrect email or password");
+      return res.json("incorrect email or password");
+    // throw new Error("incorrect email or password");
 
     logIn(req, user._id, user.accountType);
 
@@ -25,24 +27,25 @@ module.exports.authCtrl = {
   },
   signup: ({ createAccount, modelName }) => {
     return async (req, res) => {
-      const {
-        email,
-        password,
-        password_confirmation,
-        full_name,
-        fields,
-      } = req.body;
+      console.log(req.body);
 
-      validator(registerSchema, {
+      const { email, password, password_confirmation, full_name, fields } =
+        req.body;
+
+      const validationResult = await validator(registerSchema, {
         email,
         password,
         password_confirmation,
         full_name,
       });
 
+      if (!validationResult.success)
+        return res.json({ error: validationResult.error });
+
       let user = await User.findOne({ email });
 
-      if (user) throw new Error("already exist email");
+      if (user) return res.json("already exist email");
+      // throw new Error("already exist email");
 
       const hashed = await bcrypt.hash(password, 10);
 

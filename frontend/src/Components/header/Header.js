@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import Search from "@material-ui/icons/Search";
 import { Avatar } from "@material-ui/core";
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className="header">
@@ -12,8 +13,9 @@ function Header() {
         <input type="text" placeholder="Search..." />
         <Search />
       </section>
-      <section className="header__profilePhoto">
-        <Avatar />
+      <section className="header__login">
+        {/* <Avatar /> */}
+        <Link to="/login">Log in</Link>
       </section>
     </div>
   );

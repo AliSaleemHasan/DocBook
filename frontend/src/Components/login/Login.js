@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Login.css";
 import Avatar from "@material-ui/core/Avatar";
+import requests from "../../handleRequests";
+import { Link } from "react-router-dom";
 function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const logIn = (e) => {
+    e.preventDefault();
+    if (!emailRef.current.value || !passwordRef.current.value) return;
+    requests
+      .login(emailRef.current.value, passwordRef.current.value)
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="login">
       <div className="login__container">
@@ -17,10 +30,14 @@ function Login() {
           <h2>Sign in</h2>
 
           <form action="">
-            <input type="email" placeholder="Email..." />
-            <input type="password" placeholder="Password..." />
+            <input ref={emailRef} type="email" placeholder="Email..." />
+            <input
+              ref={passwordRef}
+              type="password"
+              placeholder="Password..."
+            />
             <p>forgot password!</p>
-            <button>LOGIN</button>
+            <button onClick={logIn}>LOGIN</button>
           </form>
         </section>
         <section className="Login__otherMethods">
@@ -33,7 +50,7 @@ function Login() {
         </section>
 
         <p className="login__dontHaveAccount">
-          Dont have account? <span blue_important>Sign up</span>
+          Dont have account? <Link to="/signup">Sign up</Link>
         </p>
       </div>
     </div>

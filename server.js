@@ -12,11 +12,14 @@ const { APP_PORT, APP_ORIGIN } = require("./config");
 
 const { notFound } = require("./errors");
 
+const cors = require("cors");
+
 connectDB();
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(session({ ...SESSION_OPTIONS }));
 

@@ -4,7 +4,8 @@ const { User } = require("../models");
 exports.guest = (req, res, next) => {
   if (isLoggedIn(req)) {
     // if (req.method === "POST")
-    throw new Error("you are already logged in");
+    // throw new Error("you are already logged in");
+    return res.json({ error: "you are already logged in!" });
     // res.redirect("/");
   } else next();
 };

@@ -24,3 +24,23 @@
   font-weight: 400;
   padding: 0 4px;
 }
+.header__login {
+  border-radius: 30px;
+
+  width: 100px;
+  height: 30px;
+  box-shadow: 0.5px 0.6px 1px #ccc;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header__login a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  color: #0a49ff;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: sans-serif;
+}

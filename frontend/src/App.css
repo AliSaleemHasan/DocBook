@@ -22,3 +22,9 @@
   border-radius: 0 0 240px 240p;
   width: 100%;
 }
+
+a {
+  text-decoration: none;
+  color: #0a49ff;
+  font-weight: 600;
+}
