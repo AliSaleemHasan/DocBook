@@ -3,16 +3,21 @@ import "./Login.css";
 import Avatar from "@material-ui/core/Avatar";
 import requests from "../../handleRequests";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../redux/slices/userSlice";
 function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const dispatch = useDispatch();
 
   const logIn = (e) => {
     e.preventDefault();
     if (!emailRef.current.value || !passwordRef.current.value) return;
     requests
       .login(emailRef.current.value, passwordRef.current.value)
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.user) dispatch(addUser(data.user));
+      })
       .catch((err) => console.log(err));
   };
   return (

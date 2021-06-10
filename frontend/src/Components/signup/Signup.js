@@ -2,16 +2,18 @@ import React, { useRef } from "react";
 import "./Signup.css";
 import requests from "../../handleRequests";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser } from "../../redux/slices/userSlice";
 function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const full_nameRef = useRef();
+  const dispatch = useDispatch();
 
   const signUp = (e) => {
     e.preventDefault();
     console.log(emailRef.current.value);
     console.log(passwordRef.current.value);
-
     console.log(full_nameRef.current.value);
 
     requests
@@ -22,7 +24,10 @@ function Signup() {
         passwordRef.current.value,
         full_nameRef.current.value
       )
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.user) dispatch(addUser(data.user));
+        else console.log("err");
+      })
       .catch((err) => console.log(err));
   };
 
