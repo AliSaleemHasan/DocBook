@@ -4,6 +4,7 @@ exports.logIn = (req, userId, accountType) => {
   req.session.userId = userId;
   req.session.accountType = accountType;
   req.session.createdAt = Date.now();
+  console.log(req.session);
 };
 
 exports.isLoggedIn = (req) => req.session.userId;

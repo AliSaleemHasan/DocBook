@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./Signup.css";
 import requests from "../../handleRequests";
 import { Link } from "react-router-dom";
@@ -8,27 +8,44 @@ function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const full_nameRef = useRef();
+  const specialization_ref = useRef();
+  const [isDoctor, setIsDoctor] = useState(false);
+
   const dispatch = useDispatch();
 
   const signUp = (e) => {
     e.preventDefault();
-    console.log(emailRef.current.value);
-    console.log(passwordRef.current.value);
-    console.log(full_nameRef.current.value);
 
-    requests
-
-      .signUpAsPatient(
-        emailRef.current.value,
-        passwordRef.current.value,
-        passwordRef.current.value,
-        full_nameRef.current.value
-      )
-      .then((data) => {
-        if (data.user) dispatch(addUser(data.user));
-        else console.log("err");
-      })
-      .catch((err) => console.log(err));
+    if (
+      !emailRef.current.value ||
+      !passwordRef.current.value ||
+      !full_nameRef.current.value
+    )
+      return;
+    if (!specialization_ref.current)
+      requests
+        .signUpAsPatient(
+          emailRef.current.value,
+          passwordRef.current.value,
+          passwordRef.current.value,
+          full_nameRef.current.value
+        )
+        .then((data) => {
+          if (data.user) dispatch(addUser(data.user));
+          else console.log("err");
+        })
+        .catch((err) => console.log(err));
+    else
+      requests
+        .signUpAsDoctor(
+          emailRef.current.value,
+          passwordRef.current.value,
+          passwordRef.current.value,
+          full_nameRef.current.value,
+          specialization_ref.current.value
+        )
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
   };
 
   return (
@@ -65,9 +82,28 @@ function Signup() {
               required
             />
             <input type="password" placeholder="Confirm password..." />
-            <div className="doctor__checkbox">
-              <input type="checkbox" id="doctorCheck" />
-              <label htmlFor="doctorCheck">Are you a doctor</label>
+            <div className="is__doctor">
+              <div className="doctor__checkbox">
+                <input
+                  type="checkbox"
+                  id="doctorCheck"
+                  onChange={(e) => setIsDoctor(e.target.checked)}
+                />
+                <label htmlFor="doctorCheck">Are you Doctor</label>
+              </div>
+              {isDoctor && (
+                <div className="doctor__specialization">
+                  <label htmlFor="specialization">
+                    choose your specialization
+                  </label>
+                  <select id="specialization" ref={specialization_ref}>
+                    <option value="اسنان">اسنان</option>
+                    <option value="عام">عام</option>
+                    <option value="اطفال">اطفال</option>
+                    <option value="عظمية">عظمية</option>
+                  </select>
+                </div>
+              )}
             </div>
 
             <button onClick={signUp}>Sign up</button>

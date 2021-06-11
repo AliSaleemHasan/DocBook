@@ -75,3 +75,18 @@
   color: #0a49ff;
   font-weight: 600;
 }
+.doctor__specialization {
+  font-size: 13px;
+  margin: 5px 0;
+}
+#specialization {
+  width: 25%;
+  min-width: 75px;
+  text-align: center;
+  font-size: 14px;
+  color: #0a49ff;
+  font-weight: 500;
+  border: none;
+  border-bottom: 1px solid #c4c4c4;
+  margin-left: 5px;
+}

@@ -11,9 +11,11 @@ module.exports.authCtrl = {
   login: async (req, res) => {
     const { email, password } = req.body;
 
-    validator(loginSchema, { email, password });
+    const validationResult = await validator(loginSchema, { email, password });
+    if (!validationResult.success)
+      return res.json({ error: validationResult.error });
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).populate("accountId");
 
     if (!user || !(await user.matchPassword(password, user.password)))
       return res.json("incorrect email or password");
@@ -22,7 +24,7 @@ module.exports.authCtrl = {
     logIn(req, user._id, user.accountType);
 
     res.json({
-      message: user,
+      user,
     });
   },
   signup: ({ createAccount, modelName }) => {

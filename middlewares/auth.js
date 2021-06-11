@@ -25,9 +25,11 @@ exports.verified = async (req, res, next) => {
 };
 
 exports.authnecated = (req, res, next) => {
+  console.log(req.session);
   if (!isLoggedIn(req)) {
     // if (req.method === "POST")
-    throw new Error("you must be logged in");
+    // throw new Error("you must be logged in");
+    return res.json({ error: "you must be logged in" });
     // res.redirect(`/account/login?next=${req.originalUrl}`);
   } else next();
 };
