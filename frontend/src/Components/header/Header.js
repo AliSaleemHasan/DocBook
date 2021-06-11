@@ -3,7 +3,10 @@ import "./Header.css";
 import Search from "@material-ui/icons/Search";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { Selector as userSelector } from "../../redux/slices/userSlice";
+import { useSelector } from "react-redux";
 function Header() {
+  const user = useSelector(userSelector);
   return (
     <div className="header">
       <section className="header__logo">
@@ -13,10 +16,15 @@ function Header() {
         <input type="text" placeholder="Search..." />
         <Search />
       </section>
-      <section className="header__login">
-        {/* <Avatar /> */}
-        <Link to="/login">Log in</Link>
-      </section>
+      {user ? (
+        <section className="header__avatar">
+          <Avatar />
+        </section>
+      ) : (
+        <section className="header__login">
+          <Link to="/login">Log in</Link>
+        </section>
+      )}
     </div>
   );
 }

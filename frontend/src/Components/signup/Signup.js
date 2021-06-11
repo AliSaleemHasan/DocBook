@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./Signup.css";
 import requests from "../../handleRequests";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/slices/userSlice";
 function Signup() {
   const emailRef = useRef();
+  const history = useHistory();
   const passwordRef = useRef();
   const full_nameRef = useRef();
   const specialization_ref = useRef();
@@ -44,7 +45,14 @@ function Signup() {
           full_nameRef.current.value,
           specialization_ref.current.value
         )
-        .then((data) => console.log(data))
+        .then((data) => {
+          if (data.user) {
+            dispatch(addUser(data.user));
+            history.push("/login");
+          } else {
+            console.log("err");
+          }
+        })
         .catch((err) => console.log(err));
   };
 

@@ -2,12 +2,13 @@ import React, { useRef } from "react";
 import "./Login.css";
 import Avatar from "@material-ui/core/Avatar";
 import requests from "../../handleRequests";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { addUser } from "../../redux/slices/userSlice";
 function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const logIn = (e) => {
@@ -16,7 +17,10 @@ function Login() {
     requests
       .login(emailRef.current.value, passwordRef.current.value)
       .then((data) => {
-        if (data.user) dispatch(addUser(data.user));
+        if (data.user) {
+          dispatch(addUser(data.user));
+          history.push("/");
+        }
       })
       .catch((err) => console.log(err));
   };

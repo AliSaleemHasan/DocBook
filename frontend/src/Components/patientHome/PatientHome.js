@@ -1,19 +1,24 @@
 import React from "react";
 import Header from "../header/Header";
 import "./PatientHome.css";
+import { Selector as userSelector } from "../../redux/slices/userSlice";
+import { useSelector } from "react-redux";
 function PatientHome() {
+  const user = useSelector(userSelector);
   return (
     <div className="patientHome">
       <Header />
       <div className="patientHome__main">
         <div className="patientHome__left">
           <div className="patientHome__leftParagraph">
-            <p className="weclome__paragraph">
-              welcome to DocBook{" "}
-              <span className="blue__important">username</span>
-            </p>
+            {user && (
+              <p className="weclome__paragraph">
+                welcome to DocBook
+                <span className="blue__important">username</span>
+              </p>
+            )}
             <h2>
-              Website that make doctors booking{" "}
+              Website that make doctors booking
               <span className="underlined">easier</span>
             </h2>
             <p className="main__paragrapgh">
