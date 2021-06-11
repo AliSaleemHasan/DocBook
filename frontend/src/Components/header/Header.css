@@ -6,6 +6,9 @@
   background-color: #fff;
 }
 
+.header__logo {
+  cursor: pointer;
+}
 .header__search {
   width: 50%;
   display: flex;

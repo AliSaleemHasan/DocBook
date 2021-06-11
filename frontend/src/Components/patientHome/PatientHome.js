@@ -14,7 +14,7 @@ function PatientHome() {
             {user && (
               <p className="weclome__paragraph">
                 welcome to DocBook
-                <span className="blue__important">username</span>
+                <span className="blue__important"> {user.fullName}</span>
               </p>
             )}
             <h2>

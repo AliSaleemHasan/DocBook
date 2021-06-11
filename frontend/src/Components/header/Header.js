@@ -10,11 +10,15 @@ function Header() {
   return (
     <div className="header">
       <section className="header__logo">
-        <img src="/DocBookLogo.png" alt="logo" width={100} height={40} />
+        <Link to="/">
+          <img src="/DocBookLogo.png" alt="logo" width={100} height={40} />
+        </Link>
       </section>
       <section className="header__search">
         <input type="text" placeholder="Search..." />
-        <Search />
+        <Link to="/search">
+          <Search />
+        </Link>
       </section>
       {user ? (
         <section className="header__avatar">

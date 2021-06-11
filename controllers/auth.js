@@ -15,7 +15,7 @@ module.exports.authCtrl = {
     if (!validationResult.success)
       return res.json({ error: validationResult.error });
 
-    const user = await User.findOne({ email }).populate("accountId");
+    const user = await User.findOne({ email });
 
     if (!user || !(await user.matchPassword(password, user.password)))
       return res.json("incorrect email or password");
@@ -29,8 +29,6 @@ module.exports.authCtrl = {
   },
   signup: ({ createAccount, modelName }) => {
     return async (req, res) => {
-      console.log(req.body);
-
       const { email, password, password_confirmation, full_name, fields } =
         req.body;
 
@@ -51,11 +49,17 @@ module.exports.authCtrl = {
 
       const hashed = await bcrypt.hash(password, 10);
 
+      let doctor;
+      let patient;
+      if (modelName == "Doctor") doctor = await createAccount(fields);
+      else patient = await createAccount(fields);
       user = await new User({
-        email: email,
+        email,
         password: hashed,
         accountType: modelName,
-        accountId: await createAccount(fields),
+        fullName: full_name,
+        doctor,
+        patient,
       });
 
       await user.save();

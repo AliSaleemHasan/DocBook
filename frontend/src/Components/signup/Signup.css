@@ -52,6 +52,7 @@
   outline: none;
   letter-spacing: 4px;
   background-color: #0a49ff;
+  cursor: pointer;
 }
 .signup__email p {
   font-family: sans-serif;

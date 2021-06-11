@@ -29,11 +29,15 @@ const userSchema = new Schema({
     type: Date,
   },
 
-  accountId: {
+  doctor: {
     type: Schema.Types.ObjectId,
-    required: true,
-    refPath: "type",
+    ref: "Doctor",
   },
+  patient: {
+    type: Schema.Types.ObjectId,
+    ref: "Patient",
+  },
+
   accountType: {
     type: String,
     required: true,
