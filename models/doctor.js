@@ -23,6 +23,10 @@ const drSchema = new Schema({
       enum: ["اطفال", "عظمية", "عام", "اسنان"],
     },
   ],
+  location: {
+    type: [Number, Number],
+    default: [-400000, -400000],
+  },
   claimed: false,
   hospitals: [hospitalSchema],
   rate: rateSchema,

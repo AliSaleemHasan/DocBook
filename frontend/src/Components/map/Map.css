@@ -1,0 +1,40 @@
+.map-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.sidebar {
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #ffffff;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 12px;
+  border-radius: 4px;
+}
+
+.mapboxgl-ctrl,
+.mapboxgl-ctrl-attrib {
+  display: none;
+}
+
+.mapboxgl-canvas {
+  cursor: crosshair;
+}
+
+.marker {
+  background-image: url("../../images/marker.png");
+  background-position: center;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+}
