@@ -24,8 +24,8 @@ const drSchema = new Schema({
     },
   ],
   location: {
-    type: [Number, Number],
-    default: [-400000, -400000],
+    lng: { type: Number, default: 400000 },
+    lat: { type: Number, default: 400000 },
   },
   claimed: false,
   hospitals: [hospitalSchema],

@@ -37,7 +37,7 @@ function DoctorHome() {
               <input type="time" id="from" />
               <label for="to">To</label>
               <input type="time" id="to" />
-              <button>Add Appointment</button>
+              <button>Add </button>
             </form>
           </div>
         </div>

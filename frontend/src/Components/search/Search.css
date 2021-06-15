@@ -20,11 +20,12 @@
   height: 100%;
   display: flex;
   overflow-y: scroll;
+  overflow-x: hidden;
   flex-direction: column;
-  margin-bottom: 30px;
 }
 .search__result img {
   cursor: pointer;
+  margin: 2px;
 }
 .search__map {
   height: 100%;
@@ -36,11 +37,14 @@
     flex-direction: column;
   }
   .search__map {
-    height: auto;
+    flex: 1;
+    width: 100%;
   }
   .search__result {
     flex-direction: row;
     height: auto;
     width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
   }
 }

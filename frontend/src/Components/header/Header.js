@@ -3,10 +3,24 @@ import "./Header.css";
 import Search from "@material-ui/icons/Search";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Selector as userSelector } from "../../redux/slices/userSlice";
-import { useSelector } from "react-redux";
+import {
+  Selector as userSelector,
+  addUser,
+} from "../../redux/slices/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import requests from "../../handleRequests";
 function Header() {
   const user = useSelector(userSelector);
+  const dispatch = useDispatch();
+  const logout = (e) => {
+    requests
+      .logout()
+      .then((data) => {
+        console.log(data);
+        dispatch(addUser(null));
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="header">
       <section className="header__logo">
@@ -22,6 +36,7 @@ function Header() {
       </section>
       {user ? (
         <section className="header__avatar">
+          <button onClick={logout}>logout</button>
           <Avatar />
         </section>
       ) : (

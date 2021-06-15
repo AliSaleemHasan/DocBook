@@ -66,3 +66,14 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 786px) {
+  .doctorHome__container {
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  .doctorHome__left img {
+    display: none;
+  }
+}

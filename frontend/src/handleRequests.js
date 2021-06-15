@@ -1,5 +1,3 @@
-const appUrl = "http://localhost:4000";
-
 const requests = {
   signUpAsPatient: async (
     email,
@@ -26,7 +24,8 @@ const requests = {
     password,
     password_confirmation,
     full_name,
-    specialties
+    specialties,
+    location
   ) => {
     const response = await fetch("/auth/dr/signup", {
       method: "POST",
@@ -40,6 +39,7 @@ const requests = {
         full_name,
         fields: {
           specialties: specialties,
+          location,
         },
       }),
     });
@@ -52,6 +52,12 @@ const requests = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
+    });
+    return response.json();
+  },
+  logout: async () => {
+    const response = await fetch("/auth/logout", {
+      method: "GET",
     });
     return response.json();
   },

@@ -47,3 +47,29 @@
   font-size: 16px;
   font-family: sans-serif;
 }
+
+.header__avatar {
+  display: flex;
+  align-items: center;
+}
+.header__avatar button {
+  margin: 10px;
+  height: 15px;
+  background-color: #fff;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #0a49ff;
+  font-family: sans-serif;
+}
+@media (max-width: 786px) {
+  .header__search {
+    width: 30%;
+  }
+}
+
+@media (max-width: 450px) {
+  .header__search {
+    width: 15%;
+  }
+}
